@@ -1,6 +1,6 @@
-require './client'
+require_relative './client'
 
-class TelemetryDiagnostics
+class TelemetryDiagnostics # aka TelemetryDiagnosticControls
   attr_reader :diagnostic_info
   DIAGNOSTIC_CHANNEL_CONNECTION_STRING = "*111#"
   
