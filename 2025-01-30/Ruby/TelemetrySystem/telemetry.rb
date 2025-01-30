@@ -13,7 +13,15 @@ class TelemetryDiagnostics # aka TelemetryDiagnosticControls
     @diagnostic_info = ""
     @telemetry_client.disconnect
 
-    retry_left = 3
+    connect
+
+    @telemetry_client.send(TelemetryClient::DIAGNOSTIC_MESSAGE)
+    @diagnostic_info = @telemetry_client.receive
+  end
+
+  private
+
+  def connect(retries: 3)
     while (not @telemetry_client.online_status) and retry_left > 0
       @telemetry_client.connect(DIAGNOSTIC_CHANNEL_CONNECTION_STRING)
       retry_left -= 1
@@ -21,9 +29,6 @@ class TelemetryDiagnostics # aka TelemetryDiagnosticControls
 
     if not @telemetry_client.online_status
       raise Exception.new("Unable to connect.")
-    end
-
-    @telemetry_client.send(TelemetryClient::DIAGNOSTIC_MESSAGE)
-    @diagnostic_info = @telemetry_client.receive
-  end
+    end    
+  end 
 end
