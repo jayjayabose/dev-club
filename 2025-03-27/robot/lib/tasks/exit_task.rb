@@ -3,7 +3,7 @@ class ExitTask
 
   def initialize(tasks, key)
     @tasks = tasks
-    @description = "Exit"
+    @description = 'Exit'
     @key = key
   end
 

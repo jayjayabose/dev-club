@@ -6,7 +6,7 @@ class ListTasks
 
   def initialize(tasks, key)
     @tasks = tasks
-    @description = "List tasks"
+    @description = 'List tasks'
     @key = key
   end
 
@@ -18,5 +18,6 @@ class ListTasks
   def list_tasks
     PrintTasks.new(@tasks).do
     PressToContinue.new.do
+    nil
   end
 end

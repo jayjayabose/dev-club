@@ -8,6 +8,8 @@ require_relative './tasks/default_task'
 require_relative './tasks/revert_task'
 require_relative './tasks/exit_task'
 require_relative './tasks/wait_on_empty_task'
+require_relative './tasks/shared_behavior/get_and_default'
+require_relative './tasks/action_list'
 
 class MainScreen
   def initialize(tasks)
@@ -17,30 +19,18 @@ class MainScreen
   def do
 
     loop do
-      system "clear"
-      actions = [
-        CreateATask,
-        ListTasks,
-        [WaitOnEmptyTask, EditTask],
-        [WaitOnEmptyTask, ViewTaskHistory],
-        [WaitOnEmptyTask, RevertTask],
-        ExitTask,
-      ].map.with_index do |action, i|
-        if action.respond_to?(:new)
-          action.new(@tasks, i + 1)
-        else
-          a = action[0].new(@tasks, i + 1)
-          a.set_delegator(action[1])
-        end
-      end
+      system 'clear'
+      actions = ActionList.new(@tasks).get_actions
+
       puts "\nWhat would you like to do?"
       actions.each do |action|
         puts "#{action.key}. #{action.description}"
       end
 
       action_map = actions.map.with_index { |x, i| [i + 1, x] }.to_h
-      action_map.default = DefaultTask.new(@tasks, actions.size - 1)
-      choice = gets.chomp.to_i
+      action_map.default = DefaultTask.new(@tasks, actions.size)
+      input = GetAndDefault.new.get_and_default
+      choice = input.chomp.to_i
       @tasks = action_map[choice].do
     end
   end

@@ -9,8 +9,8 @@ class PrintTasks
     else
       puts '--- Your Todo List ---'
       @tasks.each_with_index do |task, index|
-        status = task[:completed] ? '[x]' : '[ ]'
-        puts "#{index + 1}. #{status} #{task[:description]}"
+        status = task.completed ? '[x]' : '[ ]'
+        puts "#{index + 1}. #{status} #{task.description}"
       end
       puts '-----------------------'
     end

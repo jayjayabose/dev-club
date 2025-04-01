@@ -1,3 +1,4 @@
+require_relative './task'
 class CreateATask
   attr_accessor :key, :description
 
@@ -9,13 +10,17 @@ class CreateATask
 
   def do
     puts "Enter the task description:"
-    description = gets.chomp
+    input = gets
+    if input.nil?
+      input = ''
+    end
+    description = input.chomp
     add_task(description)
     @tasks
   end
 
   def add_task(description)
-    @tasks << { description: description, completed: false, history: [description] }
+    @tasks << Task.new(description, false, [description])
     puts "Task added: #{description}"
   end
 end

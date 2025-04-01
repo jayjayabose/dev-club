@@ -5,7 +5,7 @@ class WaitOnEmptyTask
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
-    @delegator = nil
+    @delegator = DefaultTask.new(tasks, key)
   end
 
   def set_delegator(delegator)
@@ -14,7 +14,7 @@ class WaitOnEmptyTask
   end
 
   def description
-    @delegator&.description
+    @delegator.description
   end
 
   def do
@@ -23,6 +23,6 @@ class WaitOnEmptyTask
       PressToContinue.new.do
       return @tasks
     end
-    @delegator&.do
+    @delegator.do
   end
 end
