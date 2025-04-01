@@ -1,5 +1,0 @@
-class Action
-  def description: -> String
-
-  def key: -> Integer
-end

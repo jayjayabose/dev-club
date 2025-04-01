@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# typed: strict
 
 require_relative './tasks/create_a_task'
 require_relative './tasks/list_tasks'
@@ -12,12 +13,15 @@ require_relative './tasks/shared_behavior/get_and_default'
 require_relative './tasks/action_list'
 
 class MainScreen
+  extend T::Sig
+
+  sig { params(tasks: T.nilable(T::Array[Task])).void }
   def initialize(tasks)
     @tasks = tasks
   end
 
+  sig { void }
   def do
-
     loop do
       system 'clear'
       actions = ActionList.new(@tasks).get_actions
@@ -27,11 +31,10 @@ class MainScreen
         puts "#{action.key}. #{action.description}"
       end
 
-      action_map = actions.map.with_index { |x, i| [i + 1, x] }.to_h
-      action_map.default = DefaultTask.new(@tasks, actions.size)
-      input = GetAndDefault.new.get_and_default
-      choice = input.chomp.to_i
-      @tasks = action_map[choice].do
+      choice = T.let(gets.chomp.to_i, Integer)
+      wait_on_empty_task_new = WaitOnEmptyTask.new(T.must(@tasks), actions.size)
+      wait_on_empty_task_new.set_delegator(DefaultTask.new(T.must(@tasks), actions.size))
+      @tasks = actions[choice - 1]&.do || wait_on_empty_task_new.do
     end
   end
 end

@@ -5,3 +5,6 @@ source "https://rubygems.org"
 # gem "rails"
 
 gem "steep", "~> 1.10"
+gem 'sorbet', :group => :development
+gem 'sorbet-runtime'
+gem 'tapioca', require: false, :group => [:development, :test]

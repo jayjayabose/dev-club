@@ -1,11 +1,17 @@
+# frozen_string_literal: true
+# typed: strict
+
 class HistoryViewer
+  extend T::Sig
+  sig { params(tasks: T::Array[Task]).void }
   def initialize(tasks)
     @tasks = tasks
   end
 
+  sig { params(task_index: Integer).void }
   def view_task_history(task_index)
     if task_index >= 1 && task_index <= @tasks.length
-      task = @tasks[task_index - 1]
+      task = T.must(@tasks[task_index - 1])
       if task.history.length <= 1
         puts 'No previous versions for this task.'
       else

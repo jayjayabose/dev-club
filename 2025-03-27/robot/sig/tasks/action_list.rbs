@@ -1,7 +1,0 @@
-class ActionList
-  @tasks: Array[Task]
-
-  def initialize:(Array[Task]) -> Array[Task]
-
-  def get_actions: -> Array[Action]
-end
