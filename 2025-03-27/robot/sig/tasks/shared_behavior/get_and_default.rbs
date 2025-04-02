@@ -1,3 +1,0 @@
-class GetAndDefault
-  def get_and_default: -> String
-end
