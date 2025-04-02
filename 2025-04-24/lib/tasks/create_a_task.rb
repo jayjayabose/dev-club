@@ -1,39 +1,26 @@
-# frozen_string_literal: true
-# typed: strict
-
 require_relative './task'
-require_relative './action'
-
 class CreateATask
-  extend T::Sig
-  include Action
+  attr_accessor :key, :description
 
-
-  sig { params(tasks: T::Array[Task], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
-    @description = T.let('Create a task', String)
+    @description = "Create a task"
   end
 
-  sig { override.returns(T::Array[Task]) }
   def do
-    puts 'Enter the task description:'
-    add_task(gets.chomp)
+    puts "Enter the task description:"
+    input = gets
+    if input.nil?
+      input = ''
+    end
+    description = input.chomp
+    add_task(description)
     @tasks
   end
 
-  sig { params(description: String).returns(NilClass) }
   def add_task(description)
     @tasks << Task.new(description, false, [description])
     puts "Task added: #{description}"
-  end
-  sig { override.returns(String) }
-  def description
-    @description
-  end
-  sig { override.returns(Integer) }
-  def key
-    @key
   end
 end

@@ -1,8 +1,15 @@
+# frozen_string_literal: true
+# typed: strict
+
 class PrintTasks
+  extend T::Sig
+
+  sig { params(tasks: T::Array[Task]).void }
   def initialize(tasks)
     @tasks = tasks
   end
 
+  sig { returns(NilClass) }
   def do
     if @tasks.empty?
       puts 'No tasks yet!'

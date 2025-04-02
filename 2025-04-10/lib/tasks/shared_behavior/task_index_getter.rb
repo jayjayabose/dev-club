@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+# typed: strict
+
 class TaskIndexGetter
+  extend T::Sig
+
+  sig { params(tasks: T::Array[Task]).void }
   def initialize(tasks)
     @tasks = tasks
   end
 
-  def get_index
+  sig { returns(Integer) }
+  def index
     puts 'Enter the number of the task whose history you want to view:'
-    s = gets
-    if s.nil?
-      s = '0'
-    end
-    s.chomp.to_i
+    gets.chomp.to_i
   end
 end
