@@ -9,7 +9,6 @@ require_relative './tasks/default_task'
 require_relative './tasks/revert_task'
 require_relative './tasks/exit_task'
 require_relative './tasks/wait_on_empty_task'
-require_relative './tasks/shared_behavior/get_and_default'
 require_relative './tasks/action_list'
 
 class MainScreen
