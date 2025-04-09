@@ -15,9 +15,9 @@ class EditTask
   sig { override.returns(T::Array[Task]) }
   def do
     puts 'Enter the number of the task you want to edit:'
-    task_number = gets.chomp.to_i
+    task_number = $stdin.gets.chomp.to_i
     puts 'Enter the new description for the task:'
-    new_description = gets.chomp
+    new_description = $stdin.gets.chomp
     edit_task(task_number, new_description)
     @tasks
   end

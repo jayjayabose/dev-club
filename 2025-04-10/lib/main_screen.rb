@@ -23,14 +23,14 @@ class MainScreen
   def do
     loop do
       system 'clear'
-      actions = ActionList.new(@tasks).get_actions
+      actions = ActionList.new(T.must(@tasks)).get_actions
 
       puts "\nWhat would you like to do?"
       actions.each do |action|
         puts "#{action.key}. #{action.description}"
       end
 
-      choice = T.let(gets.chomp.to_i, Integer)
+      choice = T.let($stdin.gets.chomp.to_i, Integer)
       wait_on_empty_task_new = WaitOnEmptyTask.new(T.must(@tasks), actions.size)
       wait_on_empty_task_new.set_delegator(DefaultTask.new(T.must(@tasks), actions.size))
       @tasks = actions[choice - 1]&.do || wait_on_empty_task_new.do

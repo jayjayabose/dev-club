@@ -12,6 +12,6 @@ class TaskIndexGetter
   sig { returns(Integer) }
   def index
     puts 'Enter the number of the task whose history you want to view:'
-    gets.chomp.to_i
+    $stdin.gets.chomp.to_i
   end
 end

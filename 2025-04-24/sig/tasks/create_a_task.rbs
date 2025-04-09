@@ -2,8 +2,10 @@
 
 # lib/tasks/create_a_task.rb
 class CreateATask
+  @tasks: Array[Task]
+
   attr_accessor description: String
-  attr_accessor key: String
+  attr_accessor key: Integer
 
   def initialize: (Array[Task], Integer) -> String
   def do: -> Array[Task]

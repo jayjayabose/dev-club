@@ -19,7 +19,7 @@ class CreateATask
   sig { override.returns(T::Array[Task]) }
   def do
     puts 'Enter the task description:'
-    add_task(gets.chomp)
+    add_task($stdin.gets.chomp)
     @tasks
   end
 

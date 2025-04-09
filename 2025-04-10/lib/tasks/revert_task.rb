@@ -30,7 +30,7 @@ class RevertTask
     task_number = TaskIndexGetter.new(@tasks).index
     HistoryViewer.new(@tasks).view_task_history(task_number)
     puts 'Enter the number of the previous version you want to revert to:'
-    history_number = gets.chomp.to_i
+    history_number = $stdin.gets.chomp.to_i
     revert_task(task_number, history_number)
     @tasks
   end

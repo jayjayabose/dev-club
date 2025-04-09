@@ -7,6 +7,6 @@ class PressToContinue
   sig { returns(String) }
   def do
     puts 'Press enter to continue'
-    $stdin.getc
+    $stdin.getc || ""
   end
 end
