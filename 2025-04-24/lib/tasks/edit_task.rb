@@ -14,7 +14,7 @@ class EditTask
     input = GetAndDefault.new.get_and_default
     task_number = input.chomp.to_i
     puts 'Enter the new description for the task:'
-    input = gets
+    input = $stdin.gets
     input = '' if input.nil?
     new_description = input.chomp
     edit_task(task_number, new_description)

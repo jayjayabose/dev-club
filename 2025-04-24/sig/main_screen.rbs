@@ -5,5 +5,5 @@ class MainScreen
   @tasks: Array[Task]
 
   def initialize: (Array[Task]) -> Array[Task]
-  def do: -> void
+  def do: -> Array[Task]
 end

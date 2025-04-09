@@ -10,7 +10,7 @@ class CreateATask
 
   def do
     puts "Enter the task description:"
-    input = gets
+    input = $stdin.gets
     if input.nil?
       input = ''
     end

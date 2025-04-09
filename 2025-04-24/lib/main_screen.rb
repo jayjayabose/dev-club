@@ -33,5 +33,6 @@ class MainScreen
       choice = input.chomp.to_i
       @tasks = action_map[choice].do
     end
+    @tasks
   end
 end

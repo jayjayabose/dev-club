@@ -2,7 +2,7 @@
 
 class GetAndDefault
   def get_and_default
-    input = gets
+    input = $stdin.gets
     input = '0' if input.nil?
     input
   end
