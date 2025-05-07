@@ -18,7 +18,7 @@ class RevertTask
     @key
   end
 
-  sig { params(tasks: T.untyped, key: T.untyped).void }
+  sig { params(tasks: T::Array[Task], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
@@ -35,7 +35,7 @@ class RevertTask
     @tasks
   end
 
-  sig { params(task_index: T.untyped, history_index: T.untyped).returns(NilClass) }
+  sig { params(task_index: Integer, history_index: Integer).returns(NilClass) }
   def revert_task(task_index, history_index)
     if task_index >= 1 && task_index <= @tasks.length
       task = @tasks[task_index - 1]
