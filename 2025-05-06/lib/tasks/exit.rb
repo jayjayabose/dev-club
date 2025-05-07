@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # typed: strict
 
-class ExitTask
+class Exit
   extend T::Sig
   include Action
 

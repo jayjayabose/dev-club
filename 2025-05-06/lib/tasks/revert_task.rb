@@ -39,10 +39,10 @@ class RevertTask
   def revert_task(task_index, history_index)
     if task_index >= 1 && task_index <= @tasks.length
       task = @tasks[task_index - 1]
-      if history_index >= 1 && history_index <= task.history.length
-        reverted_description = task.history[history_index - 1]
-        task.history << reverted_description
-        task.description = reverted_description
+      if history_index >= 1 && history_index <= T.must(task).history.length
+        reverted_description = T.must(task).history[history_index - 1]
+        T.must(task).history << T.must(reverted_description)
+        T.must(task).description = T.must(reverted_description)
         puts "Task #{task_index} reverted to version #{history_index}: #{reverted_description}"
       else
         puts 'Invalid history version number.'

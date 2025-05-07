@@ -19,6 +19,6 @@ class ActionList
       a = WaitOnEmptyTask.new(@tasks, actions.length + i + 1)
       a.set_delegator(action.new(@tasks, actions.length + i + 1))
     end, T::Array[Action])
-    (actions + other) << ExitTask.new(@tasks, actions.length + other.length + 1) 
+    (actions + other) << Exit.new(@tasks, actions.length + other.length + 1) 
   end
 end

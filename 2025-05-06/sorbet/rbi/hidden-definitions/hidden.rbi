@@ -3624,7 +3624,7 @@ end
 class ExitCalledError
 end
 
-class ExitTask
+class Exit
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
 end
