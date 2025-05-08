@@ -6,6 +6,7 @@ describe 'MainScreen' do
   before do
     allow($stdin).to receive(:getc).and_return("\n")
     allow($stdout).to receive(:puts)
+    allow_any_instance_of(Kernel).to receive(:system)
   end
 
   it 'should create a task' do
