@@ -27,6 +27,8 @@ class ViewTaskHistory
 
   sig { override.returns(T::Array[Task]) }
   def do
+    puts "@tasks: #{@tasks}"
+
     task_number = TaskIndexGetter.new(@tasks).index
     HistoryViewer.new(@tasks).view_task_history(task_number)
     PressToContinue.new.do
