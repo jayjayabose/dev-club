@@ -2,7 +2,6 @@
 # typed: strict
 
 require_relative './tasks/create_a_task'
-require_relative './tasks/list_tasks'
 require_relative './tasks/edit_task'
 require_relative './tasks/view_task_history'
 require_relative './tasks/default_task'

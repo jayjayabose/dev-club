@@ -24,6 +24,7 @@ class ListTasksImproved
       TaskImproved.new(task.description, task.completed, task.history).print(index)
     end
     puts '-----------------------'
+    PressToContinue.new.do
     @tasks
   end
 

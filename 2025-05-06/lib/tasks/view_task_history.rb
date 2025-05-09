@@ -3,6 +3,7 @@
 
 require_relative './shared_behavior/task_index_getter'
 require_relative './shared_behavior/print_tasks'
+require_relative './shared_behavior/press_to_continue'
 
 class ViewTaskHistory
   extend T::Sig
