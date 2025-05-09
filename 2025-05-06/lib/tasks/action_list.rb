@@ -4,7 +4,7 @@
 class ActionList
   extend T::Sig
 
-  sig { params(tasks: T::Array[Task]).void }
+  sig { params(tasks: T::Array[TaskInterface]).void }
   def initialize(tasks)
     @tasks = tasks
   end

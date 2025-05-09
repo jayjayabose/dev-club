@@ -9,14 +9,14 @@ class CompleteTask
   include Action
 
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
     @description = T.let('Complete a task', String)
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts 'Enter task to complete:'
     complete_task($stdin.gets.chomp.to_i)

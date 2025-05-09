@@ -12,6 +12,6 @@ module Action
   sig { abstract.returns(String) }
   def description; end
 
-  sig { abstract.returns(T::Array[Task]) }
+  sig { abstract.returns(T::Array[TaskInterface]) }
   def do; end
 end

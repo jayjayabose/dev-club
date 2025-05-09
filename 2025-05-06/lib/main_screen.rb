@@ -13,11 +13,12 @@ require_relative './tasks/load_tasks'
 require_relative './tasks/wait_on_empty_task'
 require_relative './tasks/action_list'
 require_relative './tasks/complete_task'
+require_relative './tasks/task_interface'
 
 class MainScreen
   extend T::Sig
 
-  sig { params(tasks: T.nilable(T::Array[Task])).void }
+  sig { params(tasks: T.nilable(T::Array[TaskInterface])).void }
   def initialize(tasks)
     @tasks = tasks
   end

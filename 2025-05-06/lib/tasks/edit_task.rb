@@ -5,14 +5,14 @@ class EditTask
   extend T::Sig
   include Action
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
     @description = T.let('Edit a task', String)
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts 'Enter the number of the task you want to edit:'
     task_number = $stdin.gets.chomp.to_i

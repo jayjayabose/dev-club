@@ -18,14 +18,14 @@ class ViewTaskHistory
     @description
   end
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
     @description = T.let('View task history', String)
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts "@tasks: #{@tasks}"
 

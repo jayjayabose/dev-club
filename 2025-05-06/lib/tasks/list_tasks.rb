@@ -8,14 +8,14 @@ class ListTasks
   extend T::Sig
   include Action
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
-    @tasks = T.let(tasks, T::Array[Task])
+    @tasks = T.let(tasks, T::Array[TaskInterface])
     @description = T.let('List tasks', String)
     @key = T.let(key, Integer)
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     list_tasks
     @tasks

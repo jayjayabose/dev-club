@@ -10,7 +10,7 @@ class WaitOnEmptyTask
     @key
   end
   
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
@@ -28,7 +28,7 @@ class WaitOnEmptyTask
     @delegator.description
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     PrintTasks.new(@tasks).do
     if @tasks.empty?
