@@ -14,6 +14,8 @@ require_relative './tasks/wait_on_empty_task'
 require_relative './tasks/action_list'
 require_relative './tasks/complete_task'
 require_relative './tasks/task_interface'
+require_relative './tasks/list_tasks_improved'
+require_relative './tasks/task_improved'
 
 class MainScreen
   extend T::Sig
