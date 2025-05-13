@@ -7,7 +7,7 @@ require "sqlite3"
 class LoadTasks
   extend T::Sig
   include Action
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
 
   def initialize(tasks, key)
     @tasks = tasks
@@ -16,7 +16,7 @@ class LoadTasks
     @db = SQLite3::Database.new "./db/tasks.db"
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts 'Loaded tasks'
     @db.execute "select * from task;" do |row|

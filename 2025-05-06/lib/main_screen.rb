@@ -17,7 +17,7 @@ require_relative './tasks/complete_task'
 class MainScreen
   extend T::Sig
 
-  sig { params(tasks: T.nilable(T::Array[Task])).void }
+  sig { params(tasks: T.nilable(T::Array[TaskInterface])).void }
   def initialize(tasks)
     @tasks = tasks
   end

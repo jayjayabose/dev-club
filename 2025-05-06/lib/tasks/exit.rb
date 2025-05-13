@@ -5,14 +5,14 @@ class Exit
   extend T::Sig
   include Action
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @description = T.let('Exit', String)
     @key = key
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     puts 'Exiting todo app. Goodbye!'
     exit(0)

@@ -18,14 +18,14 @@ class RevertTask
     @key
   end
 
-  sig { params(tasks: T::Array[Task], key: Integer).void }
+  sig { params(tasks: T::Array[TaskInterface], key: Integer).void }
   def initialize(tasks, key)
     @tasks = tasks
     @key = key
     @description = T.let('Revert to previous version', String)
   end
 
-  sig { override.returns(T::Array[Task]) }
+  sig { override.returns(T::Array[TaskInterface]) }
   def do
     task_number = TaskIndexGetter.new(@tasks).index
     HistoryViewer.new(@tasks).view_task_history(task_number)
