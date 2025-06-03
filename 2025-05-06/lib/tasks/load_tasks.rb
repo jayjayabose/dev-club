@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# typed: true
+# typed: strict
 
 require "sqlite3"
 
@@ -13,7 +13,7 @@ class LoadTasks
     @tasks = tasks
     @key = key
     @description = T.let('Load tasks', String)
-    @db = SQLite3::Database.new "./db/tasks.db"
+    @db = T.let(SQLite3::Database.new("./db/tasks.db"), SQLite3::Database)
   end
 
   sig { override.returns(T::Array[TaskInterface]) }
