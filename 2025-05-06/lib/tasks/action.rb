@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 # typed: strict
-
+require 'sorbet-runtime'
 module Action
   extend T::Sig
   extend T::Helpers
