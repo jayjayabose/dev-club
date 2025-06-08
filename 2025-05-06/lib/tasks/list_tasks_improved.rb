@@ -35,7 +35,6 @@ class ListTasksImproved
 
   sig { returns(T::Array[TaskInterface]) }
   def list_tasks
-    # PrintTasks.new(@tasks).do
     if @tasks.empty?
       puts 'No tasks yet!'
     else
@@ -45,6 +44,7 @@ class ListTasksImproved
       end
       puts '-----------------------'
     end
+    PressToContinue.new.do
     @tasks
   end  
 end

@@ -2,7 +2,6 @@
 # typed: strict
 
 require_relative './tasks/create_a_task'
-require_relative './tasks/list_tasks'
 require_relative './tasks/edit_task'
 require_relative './tasks/view_task_history'
 require_relative './tasks/default_task'
@@ -13,6 +12,9 @@ require_relative './tasks/load_tasks'
 require_relative './tasks/wait_on_empty_task'
 require_relative './tasks/action_list'
 require_relative './tasks/complete_task'
+
+require_relative './tasks/list_tasks_improved'
+require_relative './tasks/task_improved'
 
 class MainScreen
   extend T::Sig
